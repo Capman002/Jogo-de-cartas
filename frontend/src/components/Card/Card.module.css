@@ -1,0 +1,85 @@
+.card {
+  width: 200px; /* Increased from 150px */
+  height: 280px; /* Increased from 210px */
+  background: #151515;
+  border-radius: 16px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  overflow: visible;
+  display: flex;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  z-index: 10;
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-40px) scale(1.1) !important; /* Force lift on hover */
+  z-index: 1000 !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+}
+
+.card:hover::after {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.card.tapped {
+  transform: rotate(90deg);
+  filter: brightness(0.8);
+}
+
+.card.selected {
+  box-shadow: 0 0 0 4px var(--accent-green), 0 30px 60px rgba(0, 255, 102, 0.3);
+  transform: translateY(-50px) scale(1.15) !important;
+  z-index: 2000 !important;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.statsOverlay {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.statBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  font-size: 18px;
+  border: 3px solid #1a1a1a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}

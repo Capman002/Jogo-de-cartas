@@ -1,0 +1,235 @@
+.gameTable {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1e1e1e 0%, #050505 80%);
+  padding: 40px;
+}
+
+/* --- Opponent Zone (Top) --- */
+.opponentZone {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  z-index: 20;
+}
+
+/* --- Player Zone (Bottom) --- */
+.playerZone {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  padding: 0 40px;
+  pointer-events: none;
+}
+
+.deck {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  width: 160px;
+  height: 224px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  pointer-events: auto;
+  cursor: pointer;
+  box-shadow: 4px -4px 0 #111, 4px -4px 0 1px #333, 8px -8px 0 #111,
+    8px -8px 0 1px #333;
+  transition: transform 0.2s ease;
+}
+
+.deck::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+.deck:hover {
+  transform: translateY(-10px);
+}
+
+.hand {
+  position: absolute;
+  bottom: -20px; /* Raised significantly to show full cards */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 450px;
+  width: 1200px;
+  z-index: 50;
+  pointer-events: auto;
+  padding-bottom: 60px;
+}
+
+.rightControls {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  pointer-events: auto;
+}
+
+.graveyard {
+  width: 160px;
+  height: 224px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.resources {
+  display: flex;
+  gap: 16px;
+}
+
+.resourceCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.resourceCircle svg {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.endTurnBtn {
+  background: var(--accent-green);
+  color: #000;
+  border: none;
+  padding: 18px 48px;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(0, 255, 102, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.endTurnBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.endTurnBtn:hover {
+  box-shadow: 0 0 50px rgba(0, 255, 102, 0.5);
+  transform: scale(1.05);
+}
+
+.endTurnBtn:hover::before {
+  left: 100%;
+}
+
+.timer {
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+/* --- Field (Center) --- */
+.field {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  perspective: 1500px;
+  z-index: 10;
+  width: 80%;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+/* Removed the dark background box that looked problematic */
+.row::before {
+  display: none;
+}
+
+.row.opponentRow {
+  transform: rotateX(10deg) translateY(-20px);
+}
+
+.row.playerRow {
+  transform: rotateX(10deg) translateY(20px);
+}
