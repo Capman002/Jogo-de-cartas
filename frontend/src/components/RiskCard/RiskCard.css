@@ -1,0 +1,161 @@
+.risk-card {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 180px;
+  background: var(--gradient-card);
+  border: 2px solid;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: default;
+  transition: top 0.3s linear, transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  z-index: var(--z-card);
+}
+
+.risk-card.targetable {
+  cursor: pointer;
+}
+
+.risk-card.targetable:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  z-index: calc(var(--z-card) + 5);
+}
+
+/* Severidade */
+.risk-card.severity-baixa {
+  border-color: var(--color-severity-low);
+}
+.risk-card.severity-media {
+  border-color: var(--color-severity-medium);
+}
+.risk-card.severity-alta {
+  border-color: var(--color-severity-high);
+}
+.risk-card.severity-critica {
+  border-color: var(--color-severity-critical);
+  animation: pulse-border 1s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    box-shadow: 0 0 10px var(--color-severity-critical);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--color-severity-critical);
+  }
+}
+
+/* Barra de progresso */
+.risk-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  transition: width var(--transition-normal);
+}
+
+/* Conteúdo */
+.risk-content {
+  padding: var(--spacing-sm);
+  position: relative;
+}
+
+/* Header */
+.risk-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--spacing-xs);
+}
+
+.risk-severity {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: white;
+}
+
+/* Nome */
+.risk-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-sm);
+  line-height: 1.2;
+}
+
+/* Slots */
+.risk-slots {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.slot {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.slot.empty {
+  background: var(--color-bg-secondary);
+  border: 2px dashed var(--color-border);
+}
+
+.slot.filled {
+  background: linear-gradient(135deg, var(--color-accent-green), #22c55e);
+  border: 2px solid var(--color-accent-green);
+}
+
+.slot-icon {
+  font-size: 1rem;
+}
+
+.slot.filled .slot-icon {
+  opacity: 0.6;
+}
+
+.slot-check {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: white;
+}
+
+/* Indicador de alvo */
+.risk-target-indicator {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background: var(--color-accent-orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  animation: bounce-small 0.5s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--color-accent-orange);
+}
+
+@keyframes bounce-small {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

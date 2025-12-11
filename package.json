@@ -1,0 +1,24 @@
+{
+  "name": "sst-protocolo-seguranca",
+  "version": "1.0.0",
+  "description": "Jogo de puzzle/lane defense sobre Segurança do Trabalho",
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "dev:frontend": "cd frontend && bun run dev",
+    "dev:backend": "cd backend && bun run dev",
+    "install:all": "cd frontend && bun install && cd ../backend && bun install"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "keywords": [
+    "game",
+    "safety",
+    "puzzle",
+    "elysia",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT"
+}

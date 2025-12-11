@@ -1,0 +1,166 @@
+.game-board {
+  flex: 1;
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%),
+    var(--gradient-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lane */
+.lane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.3) 0%,
+    rgba(15, 23, 42, 0.5) 100%
+  );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.lane::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(239, 68, 68, 0.05) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(34, 197, 94, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* Cabeçalho da Lane */
+.lane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-tertiary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lane-name {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.lane-indicator {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+/* Zonas */
+.lane-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  border: 1px dashed var(--color-border);
+  margin: var(--spacing-xs);
+  border-radius: var(--radius-md);
+  min-height: 50px;
+  transition: all var(--transition-normal);
+}
+
+.zone-label {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Zona de Spawn */
+.spawn-zone {
+  background: linear-gradient(
+    180deg,
+    rgba(239, 68, 68, 0.1) 0%,
+    transparent 100%
+  );
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Conteúdo da Lane (onde os riscos descem) */
+.lane-content {
+  flex: 1;
+  position: relative;
+  min-height: 200px;
+  padding: var(--spacing-sm);
+}
+
+/* Zona de Instalação */
+.install-zone {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.1) 100%
+  );
+  border-color: rgba(168, 85, 247, 0.3);
+  min-height: 80px;
+  cursor: default;
+}
+
+.install-zone.highlight {
+  border-color: var(--color-epc);
+  background: rgba(168, 85, 247, 0.2);
+  cursor: pointer;
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+
+.epc-slots {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--spacing-xs);
+}
+
+/* Zona do Trabalhador */
+.worker-zone {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(34, 197, 94, 0.1) 100%
+  );
+  border-color: rgba(34, 197, 94, 0.3);
+  gap: var(--spacing-xs);
+}
+
+.worker-icon {
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Marcadores de divisão visual */
+.lane::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
