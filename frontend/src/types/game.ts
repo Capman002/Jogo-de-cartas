@@ -72,12 +72,6 @@ export const ICON_LABELS: Record<IconTag, string> = {
   MENTAL: "Mental",
 };
 
-export const CATEGORY_COLORS: Record<CardCategory, string> = {
-  EPI: "#3b82f6",
-  ADM: "#eab308",
-  EPC: "#a855f7",
-};
-
 export const SEVERITY_COLORS: Record<RiskSeverity, string> = {
   Baixa: "#22c55e",
   Media: "#eab308",

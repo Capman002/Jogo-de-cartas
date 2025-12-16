@@ -1,11 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { GameState, SolutionCard } from "./types/game";
-import {
-  ICON_EMOJI,
-  ICON_LABELS,
-  CATEGORY_COLORS,
-  SEVERITY_COLORS,
-} from "./types/game";
+import { ICON_EMOJI, ICON_LABELS, SEVERITY_COLORS } from "./types/game";
 import * as api from "./api/gameApi";
 import "./App.css";
 
@@ -395,18 +390,13 @@ function App() {
               className={`hand-card ${discardMode ? "discard-target" : ""}`}
               onClick={() => handleCardClick(card)}
             >
-              <div
-                className="card-badge"
-                style={{ background: CATEGORY_COLORS[card.tipo] }}
-              >
-                {card.tipo}
-              </div>
-              <span className="card-emoji">
-                {card.fornece_icones
-                  .map((icone) => ICON_EMOJI[icone])
-                  .join(" ")}
-              </span>
-              <span className="card-name">{card.nome}</span>
+              <img
+                src={`/cartas_geradas/${card.nome
+                  .replace(/ /g, "_")
+                  .replace(/[()]/g, "")}.avif`}
+                alt={card.nome}
+                className="card-image"
+              />
               {discardMode && <div className="card-discard-tag">🗑️</div>}
             </div>
           ))}
