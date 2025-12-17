@@ -168,15 +168,30 @@ function aplicarCarta(cardId: string): {
   const carta = gameState.mao[idx];
   const risco = gameState.riscoAtual;
 
-  // NOVO: Verifica se a carta fornece algum ícone que o risco precisa
-  const iconeQueResolve = carta.fornece_icones.find((icone) =>
-    risco.card.slots_requeridos.some(
-      (req) => req === icone && !risco.slots_preenchidos.includes(req)
-    )
-  );
+  // Lógica corrigida para preencher múltiplos slots e lidar com tipos repetidos
+  let slotsPreenchidosNestaJogada = 0;
+
+  // Clone para não mutar estado se falhar (embora aqui vamos mutar direto se sucesso)
+  const novosSlotsPreenchidos = [...risco.slots_preenchidos];
+  const slotsRequeridos = risco.card.slots_requeridos;
+
+  for (const icone of carta.fornece_icones) {
+    // Quantos desse ícone são necessários no total?
+    const qtdNecessaria = slotsRequeridos.filter((r) => r === icone).length;
+    // Quantos já foram preenchidos (incluindo os desta jogada)?
+    const qtdPreenchida = novosSlotsPreenchidos.filter(
+      (p) => p === icone
+    ).length;
+
+    // Se ainda precisa desse ícone, preenche
+    if (qtdPreenchida < qtdNecessaria) {
+      novosSlotsPreenchidos.push(icone);
+      slotsPreenchidosNestaJogada++;
+    }
+  }
 
   // CARTA ERRADA = PERDE VIDA!
-  if (!iconeQueResolve) {
+  if (slotsPreenchidosNestaJogada === 0) {
     gameState.mao.splice(idx, 1); // Perde a carta mesmo assim
     const gameOver = perderVida();
     return {
@@ -189,21 +204,36 @@ function aplicarCarta(cardId: string): {
     };
   }
 
-  // Carta certa - preenche o primeiro slot vazio que corresponde
-  risco.slots_preenchidos.push(iconeQueResolve);
+  // Carta certa - atualiza slots com os novos
+  risco.slots_preenchidos = novosSlotsPreenchidos;
   gameState.mao.splice(idx, 1);
 
-  const done = risco.card.slots_requeridos.every((s) =>
-    risco.slots_preenchidos.includes(s)
-  );
+  // Verifica se completou o risco
+  const done = risco.card.slots_requeridos.every((req) => {
+    const totalRequerido = risco.card.slots_requeridos.filter(
+      (r) => r === req
+    ).length;
+    const totalPreenchido = risco.slots_preenchidos.filter(
+      (p) => p === req
+    ).length;
+    return totalPreenchido >= totalRequerido;
+  });
 
   if (done) {
     gameState.tempoTotal = Math.min(
       gameState.tempoTotalMax,
-      gameState.tempoTotal + 5
+      gameState.tempoTotal + 10 // Bônus aumentado para 10s
     );
     gameState.pontuacao += risco.card.dano_ao_trabalhador * 10;
     gameState.riscosResolvidos++;
+
+    // Progressão de Nível
+    if (
+      gameState.riscosResolvidos > 0 &&
+      gameState.riscosResolvidos % 3 === 0
+    ) {
+      gameState.nivel++;
+    }
 
     if (gameState.riscosResolvidos >= gameState.riscosTotal) {
       gameState.fase = "vitoria";
@@ -220,7 +250,7 @@ function aplicarCarta(cardId: string): {
     gameState.tempoRodada = gameState.tempoRodadaMax;
     return {
       success: true,
-      message: "✅ Risco neutralizado! (+5s)",
+      message: "✅ Risco neutralizado! (+10s)",
       riscoResolvido: true,
       gameOver: false,
     };
@@ -230,7 +260,7 @@ function aplicarCarta(cardId: string): {
     risco.card.slots_requeridos.length - risco.slots_preenchidos.length;
   return {
     success: true,
-    message: `✓ Faltam ${falta} slot(s)`,
+    message: `✓ +${slotsPreenchidosNestaJogada} slot(s)! Faltam ${falta}`,
     riscoResolvido: false,
     gameOver: false,
   };
