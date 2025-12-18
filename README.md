@@ -50,7 +50,7 @@ O jogo opera sob um **Game Loop** em tempo real onde:
 4.  As cartas seguem a hierarquia de controle:
     - 🔵 **EPI**: Equipamento de Proteção Individual.
     - 🟡 **ADM**: Medidas Administrativas.
-    - 🟣 **EPC**: Equipamento de Proteção Coletiva (Mais eficiente).
+    - 🟣 **EPC**: Equipamento de Proteção Coletiva.
 
 ---
 

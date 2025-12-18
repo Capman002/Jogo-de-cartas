@@ -19,7 +19,7 @@ export interface SolutionCard {
   tipo: CardCategory;
   fornece_icones: IconTag[]; // MUDANÇA: Agora array (cartas podem resolver múltiplos tipos)
   descricao: string;
-  custo_energia: number;
+
   cor: string;
 }
 
@@ -46,7 +46,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO"],
     descricao: "Contra impactos e quedas",
-    custo_energia: 1,
+
     cor: "#3B82F6",
   },
   {
@@ -55,7 +55,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO", "QUIMICO"], // Combo!
     descricao: "Contra partículas volantes e respingos",
-    custo_energia: 2,
+
     cor: "#3B82F6",
   },
   {
@@ -64,7 +64,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO"],
     descricao: "Redução leve de ruído (conforto)",
-    custo_energia: 1,
+
     cor: "#3B82F6",
   },
   {
@@ -73,7 +73,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO", "MENTAL"], // Combo!
     descricao: "Redução drástica de ruído (foco)",
-    custo_energia: 2,
+
     cor: "#3B82F6",
   },
   {
@@ -82,7 +82,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO"],
     descricao: "Trabalho pesado, abrasão",
-    custo_energia: 1,
+
     cor: "#3B82F6",
   },
   {
@@ -91,7 +91,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["QUIMICO"],
     descricao: "Manuseio de óleos e solventes",
-    custo_energia: 1,
+
     cor: "#3B82F6",
   },
   {
@@ -100,7 +100,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO"],
     descricao: "Alta tensão elétrica",
-    custo_energia: 2,
+
     cor: "#3B82F6",
   },
   {
@@ -109,7 +109,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO"],
     descricao: "Corte por lâminas",
-    custo_energia: 1,
+
     cor: "#3B82F6",
   },
   {
@@ -118,7 +118,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["QUIMICO"],
     descricao: "Poeiras e névoas",
-    custo_energia: 1,
+
     cor: "#3B82F6",
   },
   {
@@ -127,7 +127,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["QUIMICO", "FISICO"], // Combo!
     descricao: "Gases tóxicos e proteção ocular",
-    custo_energia: 3,
+
     cor: "#3B82F6",
   },
   {
@@ -136,7 +136,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO"],
     descricao: "Trabalho em altura",
-    custo_energia: 2,
+
     cor: "#3B82F6",
   },
   {
@@ -145,7 +145,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPI",
     fornece_icones: ["FISICO"],
     descricao: "Calor radiante extremo",
-    custo_energia: 2,
+
     cor: "#3B82F6",
   },
 
@@ -156,7 +156,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Burocracia que obriga a checagem",
-    custo_energia: 1,
+
     cor: "#EAB308",
   },
   {
@@ -165,7 +165,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Identificação prévia de perigos",
-    custo_energia: 2,
+
     cor: "#EAB308",
   },
   {
@@ -174,7 +174,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Aumenta a perícia, reduz erro",
-    custo_energia: 2,
+
     cor: "#EAB308",
   },
   {
@@ -183,7 +183,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Reseta a barra de fadiga",
-    custo_energia: 1,
+
     cor: "#EAB308",
   },
   {
@@ -192,7 +192,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Quebra a monotonia/hipnose",
-    custo_energia: 1,
+
     cor: "#EAB308",
   },
   {
@@ -201,7 +201,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Alerta visual passivo",
-    custo_energia: 1,
+
     cor: "#EAB308",
   },
   {
@@ -210,7 +210,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Reforço de memória de curto prazo",
-    custo_energia: 1,
+
     cor: "#EAB308",
   },
   {
@@ -219,7 +219,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Evita pânico em crises",
-    custo_energia: 2,
+
     cor: "#EAB308",
   },
   {
@@ -228,7 +228,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Garante que a máquina não falhe",
-    custo_energia: 1,
+
     cor: "#EAB308",
   },
   {
@@ -237,7 +237,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Monitoramento externo humano",
-    custo_energia: 2,
+
     cor: "#EAB308",
   },
   {
@@ -246,7 +246,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "ADM",
     fornece_icones: ["MENTAL"],
     descricao: "Barreira psicológica visual",
-    custo_energia: 1,
+
     cor: "#EAB308",
   },
 
@@ -257,7 +257,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO"],
     descricao: "Elimina risco de queda",
-    custo_energia: 3,
+
     cor: "#A855F7",
   },
   {
@@ -266,7 +266,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO"],
     descricao: "Para máquina se alguém entrar",
-    custo_energia: 3,
+
     cor: "#A855F7",
   },
   {
@@ -275,7 +275,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO"],
     descricao: "Parada imediata manual",
-    custo_energia: 2,
+
     cor: "#A855F7",
   },
   {
@@ -284,7 +284,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["QUIMICO"],
     descricao: "Suga o veneno na fonte",
-    custo_energia: 3,
+
     cor: "#A855F7",
   },
   {
@@ -293,7 +293,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO", "MENTAL"], // Combo!
     descricao: "Isola a fonte de ruído",
-    custo_energia: 4,
+
     cor: "#A855F7",
   },
   {
@@ -302,7 +302,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["QUIMICO"],
     descricao: "Mitigação pós-acidente",
-    custo_energia: 2,
+
     cor: "#A855F7",
   },
   {
@@ -311,7 +311,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO"],
     descricao: "Cadeado físico em disjuntores",
-    custo_energia: 3,
+
     cor: "#A855F7",
   },
   {
@@ -320,7 +320,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO"],
     descricao: "Ergonomia física para trabalho em pé",
-    custo_energia: 2,
+
     cor: "#A855F7",
   },
   {
@@ -329,7 +329,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["MENTAL", "FISICO"], // Combo!
     descricao: "Melhora visibilidade e atenção",
-    custo_energia: 3,
+
     cor: "#A855F7",
   },
   {
@@ -338,7 +338,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["QUIMICO"],
     descricao: "Renovação de ar do galpão",
-    custo_energia: 3,
+
     cor: "#A855F7",
   },
   {
@@ -347,7 +347,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO"],
     descricao: "Desvia fuga de corrente",
-    custo_energia: 3,
+
     cor: "#A855F7",
   },
   {
@@ -356,7 +356,7 @@ export const solutionCards: SolutionCard[] = [
     tipo: "EPC",
     fornece_icones: ["FISICO"],
     descricao: "Barreira contra UV e fagulhas",
-    custo_energia: 2,
+
     cor: "#A855F7",
   },
 ];

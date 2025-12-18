@@ -96,8 +96,7 @@ export function RiskManagement({ state, onSkip }: RiskManagementProps) {
                     Protocolo Requerido
                   </h4>
                   <div className="text-destructive font-bold text-xs flex items-center gap-1">
-                    <Skull size={12} /> -{risk.card.dano_ao_trabalhador} se
-                    falhar
+                    <Skull size={12} /> -1 vida se falhar
                   </div>
                 </div>
 

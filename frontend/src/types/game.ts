@@ -17,7 +17,6 @@ export interface SolutionCard {
   tipo: CardCategory;
   fornece_icones: IconTag[]; // MUDANÇA: Agora array para suportar combos
   descricao: string;
-  custo_energia: number;
   cor: string;
 }
 
